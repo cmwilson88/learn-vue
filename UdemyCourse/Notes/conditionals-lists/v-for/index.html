@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS Application</title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+	
+
+	<div id="app">
+		<ul>
+			<!-- When updating an array item using Vue JS, Vue only keeps track of the index of the item in the array that is going to be patched, not the item itself.  If we want to be safe and make sure that Vue knows the item as well, we can pass it a unique identifier with the v-bind:key or :key property/attribute that is unique to that item (in bigger apps, most likely an ID that is unique to every item), in this example, the name of the ingredient (with the assumption that every item will be unique) -->
+			<!-- If it ever needs to reorder them, it will take the actual element and reorder instead of overriding the element in the specific position -->
+			<li v-for="(ingredient, i) of ingredients" :key="ingredient">{{ ingredient }} ( {{ i }} ) </li>
+		</ul>
+		<!-- When pushing items to an array from the HTML page with Vue, Vue uses a proxy that watches for changes in the reference variable (the array) and automatically displays the changes instead of the developer coding in a computed or watch function, or methods method -->
+		<button 
+			@click="ingredients.push('spices')">Add New</button>
+		<hr>
+		<!-- Use template to loop over multiple non nested elements -->
+		<template v-for="(ingredient, i) of ingredients">
+			<h1>{{ ingredient }}</h1>
+			<p>{{ i }}</p>
+		</template>
+		<hr>
+		<!-- Loop through objects -->
+		<ul>
+			<li v-for="person in persons">
+				<!-- Nested for loop -->
+				<!-- Grabbing key value pair (order matters in parens) -->
+				<div v-for="(value, key, index) in person">{{ key }}: {{ value}} ( {{ index }} )</div>
+			</li>
+		</ul>
+		<hr>
+		<!-- Loop through list of numbers -->
+		<span v-for="n in 10">{{n}}</span>
+	</div>
+
+	<script src="https://unpkg.com/vue@2.4.2"></script>
+	<script src="./app.js"></script>
+</body>
+</html>

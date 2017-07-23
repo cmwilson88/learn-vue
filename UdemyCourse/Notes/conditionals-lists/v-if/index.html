@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS Application</title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+	<!-- V-IF completely removes or attaches an element to the DOM.  It does not hide it -->
+	
+	<div id="if">
+		<!-- v-if -->
+		<p v-if="show">You can see me! <span>Hello!</span></p>
+		<!-- v-else -->
+		<p v-else>Now you see me</p>
+		<!-- V-SHOW -->
+		<p v-show="show">Do you also see me?</p>
+		<button @click="show = !show">Switch</button>
+
+		<hr>
+		<!-- v-if v-else-if v-else pattern -->
+		<p v-if="type==='A'">Type is A</p>
+		<p v-else-if="type==='B'">Type is B</p>
+		<p v-else-if="type==='C'">Type is C</p>
+		<p v-else>Not A/B/C</p>
+		<input type="text" v-model="type">
+
+		<hr>
+		<!-- HTML-5 Doesn't get rendered in DOM -->
+		<!-- This allows us to wrap multiple elements that we want to attach a v-if statement to instead of using a div that is rendered to DOM -->
+		<!-- Reduces side effects -->
+		<template v-if="show">
+			<h1>Heading</h1>
+			<p>Inside of template</p>
+		</template>
+	</div>
+
+	<!-- V-SHOW will show/hide the element by applying 'display: none' to the element with the v-show binding-->
+	<!-- V-IF is preferred as it is better for performance to have less in the DOM -->
+
+	<script src="https://unpkg.com/vue@2.4.2"></script>
+	<script src="./app.js"></script>
+</body>
+</html>

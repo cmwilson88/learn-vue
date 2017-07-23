@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+        <div id="app">
+            <template v-if="gameOver===1">
+                <h1 v-if="healthStatus.myHealth === 0">YOU LOST</h1>
+                <h1 v-else>YOU WON!</h1>
+                <button @click="giveUp">Play Again?</button>
+            </template>
+            <template v-else>
+                <section class="row">
+                    <div class="small-6 columns">
+                        <h1 class="text-center">YOU</h1>
+                        <div class="healthbar">
+                            <div 
+                                class="playerhealth text-center" 
+                                style="margin: 0; color: white; background-color: green"
+                                :style="{width: widths.player + '%'}">
+                            {{ healthStatus.myHealth + '%'}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <h1 class="text-center">MONSTER</h1>
+                        <div class="healthbar">
+                            <div 
+                                class="monsterhealth text-center" 
+                                style=" margin: 0; color: white;background-color: red"
+                                :style="{width: widths.monster + '%'}">
+                            {{ healthStatus.monHealth + '%' }}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <template v-if="!gameStatus.gameLoading">
+                    <section
+                        class="row controls"
+                        v-if="!gameStatus.gameStarted">
+                        <div class="small-12 columns">
+                            <button 
+                                id="start-game"
+                                @click="startGame">START NEW GAME</button>
+                        </div>
+                    </section>
+                    <section
+                        class="row controls"
+                        v-else>
+                        <div class="small-12 columns">
+                            <button 
+                                id="attack"
+                                @click="attackTurn">ATTACK</button>
+                            <button 
+                                id="special-attack"
+                                @click="specialAttack">SPECIAL ATTACK</button>
+                            <button 
+                                id="heal"
+                                @click="healMyself">HEAL</button>
+                            <button 
+                                id="give-up"
+                                @click="giveUp">GIVE UP</button>
+                        </div>
+                    </section>
+                </template>
+            </template>
+            <section class="row log">
+                <div class="small-12 columns">
+                    <ul>
+                        <li v-for="message of log">
+                            {{ message.message }}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    <script src="./app.js"></script>
+</body>
+</html>

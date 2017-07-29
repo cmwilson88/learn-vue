@@ -72,7 +72,21 @@
                 <div class="small-12 columns">
                     <ul>
                         <li v-for="message of log">
-                            {{ message.message }}
+                            <div 
+                                v-if="message.type==='heal'"
+                                :style="styles.heal">
+                                {{message.message}}
+                            </div>
+                            <div 
+                                v-else-if="message.type==='attack'"
+                                :style="styles.attack">
+                                {{message.message}}
+                            </div>
+                            <div
+                                v-else
+                                :style="styles.damage">
+                                {{message.message}}
+                            </div>
                         </li>
                     </ul>
                 </div>

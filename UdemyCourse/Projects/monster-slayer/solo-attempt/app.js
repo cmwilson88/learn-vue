@@ -6,8 +6,8 @@ new Vue({
 			gameLoading: false,
 		},
 		healthStatus: {
-			myHealth: 50,
-			monHealth: 50,
+			myHealth: 1,
+			monHealth: 1,
 		},
 		gameMoves: {
 			myAttack: null,
@@ -16,8 +16,22 @@ new Vue({
 			myHealing: null,
 		},
 		widths: {
-			player: 50,
-			monster: 50
+			player: 1,
+			monster: 1
+		},
+		styles: {
+			heal: {
+				color: 'green',
+				backgroundColor: 'lightgreen' 
+			},
+			attack: {
+				color: 'blue',
+				backgroundColor: 'lightblue',
+			},
+			damage: {
+				color: 'red',
+				backgroundColor: 'lightcoral'
+			}
 		},
 		log: []
 	},

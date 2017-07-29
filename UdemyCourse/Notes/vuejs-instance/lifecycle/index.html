@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS Lifecycle</title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+	
+	<div id="app">
+		<h1>{{ title }}</h1>
+		<button @click="title='Changed'">Update Title</button>
+		<button @click="destroy">destroy</button>
+	</div>
+
+	<script src="https://unpkg.com/vue@2.4.2"></script>
+	<script src="./app.js"></script>
+</body>
+</html>

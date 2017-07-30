@@ -8,7 +8,6 @@
 
 <script>
 	import {eventBus} from '../main.js';
-	import QuoteItem from './Quote.vue';
 	export default {
 		data: function() {
 			return {
